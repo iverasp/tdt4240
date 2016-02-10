@@ -29,7 +29,8 @@ public class GameState extends State implements TouchListener {
         this.x = x;
         this.y = y;
         resetPlayers();
-        this.ball = new Ball(x/2, y/2);
+        this.ball = Ball.getInstance();
+        ball.setStartPosition(x/2, y/2);
         ball.reset();
         gameOver = false;
     }

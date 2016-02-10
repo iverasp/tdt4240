@@ -17,20 +17,29 @@ public class Ball extends Sprite {
     private Rect spriteRect;
     private int posX;
     private int posY;
-    private int startX;
-    private int startY;
+    private int startX = 0;
+    private int startY = 0;
     private int size = 30;
     private Bitmap sprite;
+    private static Ball ball;
 
-    public Ball(int x, int y) {
+    public static Ball getInstance() {
+        if (ball == null) ball = new Ball();
+        return ball;
+    }
+
+    private Ball() {
+        spriteRect = new Rect(0, 0, size, size);
+        sprite = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
+        sprite.eraseColor(Color.WHITE);
+    }
+
+    public void setStartPosition(int x, int y) {
         this.posX = x;
         this.posY = y;
         this.startX = x;
         this.startY = y;
         setPosition(x, y);
-        spriteRect = new Rect(0, 0, size, size);
-        sprite = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
-        sprite.eraseColor(Color.WHITE);
     }
 
     public void draw(Canvas canvas) {
