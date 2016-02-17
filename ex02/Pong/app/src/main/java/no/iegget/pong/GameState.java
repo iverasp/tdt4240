@@ -22,10 +22,12 @@ public class GameState extends State implements TouchListener {
     private int x;
     private int y;
     private boolean gameOver;
+    private AbstractFactory abstractFactory;
 
     public GameState(int x, int y) {
-        this.player1 = new Paddle(paddleWidth, paddleLength);
-        this.player2 = new Paddle(paddleWidth, paddleLength);
+        abstractFactory = FactoryProducer.getFactory("player");
+        this.player1 = (Paddle) abstractFactory.getPlayer("paddle");
+        this.player2 = (Paddle) abstractFactory.getPlayer("paddle");
         this.x = x;
         this.y = y;
         resetPlayers();

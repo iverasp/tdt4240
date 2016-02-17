@@ -10,7 +10,7 @@ import sheep.game.Sprite;
 /**
  * Created by iver on 07/02/16.
  */
-public class Paddle extends Sprite {
+public class Paddle extends Sprite implements Player {
 
     private int height;
     private int width;
@@ -32,39 +32,48 @@ public class Paddle extends Sprite {
         this.score = 0;
     }
 
+    @Override
     public void draw(Canvas canvas) {
         Rect newRect = new Rect(posX, posY, posX + width, posY + height);
         canvas.drawBitmap(sprite, spriteRect, newRect, null);
     }
 
+    @Override
     public void update(float delta) {
 
     }
 
+    @Override
     public int getPosX() {
         return posX;
     }
 
+    @Override
     public void setPosX(int posX) {
         this.posX = posX;
     }
 
+    @Override
     public int getPosY() {
         return posY;
     }
 
+    @Override
     public void setPosY(int posY) {
         this.posY = posY;
     }
 
+    @Override
     public int getScore() {
         return score;
     }
 
+    @Override
     public void setScore(int score) {
         this.score = score;
     }
 
+    @Override
     public Rect getSpriteRect() {
         return new Rect(posX, posY, posX + width, posY + height);
     }
